@@ -1,7 +1,7 @@
 var kristian = {
     nombre: 'Kristian',
     apellido: 'Lopez',
-    edad: 28,
+    edad: 8,
     ingeniero: true,
     cocinero: false,
     cantante: true,
@@ -40,4 +40,7 @@ imprimirProfesiones(kristian)
 function imprimirSiEsMayorDeEdad(persona) {
     //Kristian es mayor de edad
     //Kristian es menor de edad
+    console.log(`${persona.nombre} es ${(persona.edad > 17) ? "mayor" : "menor"} de edad`)
 }
+
+imprimirSiEsMayorDeEdad(kristian)
