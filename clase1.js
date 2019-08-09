@@ -1,8 +1,11 @@
 var nombre = 'Kristian', apellido = 'Lopez'
-var edad = 28
 
-edad = '28 años'
-console.log('Hola ' + nombre + ' ' + apellido)
-console.log('Tengo ' + edad)
+var nombreEnMayusculas = nombre.toUpperCase()
+var apellidoEnMinisculas = apellido.toLowerCase()
 
-var peso = 75
+var primeraLetraDelNombre = nombre.charAt(0)
+var cantidadDeLetrasDelNombre = nombre.length
+
+var nombreCompleto = `${nombre} ${apellido.toUpperCase()}`
+
+var str = nombre.substr(1,2)
