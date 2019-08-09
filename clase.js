@@ -1,13 +1,17 @@
 var kristian = {
     nombre: 'Kristian',
     apellido: 'Lopez',
-    edad: 8,
+    edad: 28,
     ingeniero: true,
     cocinero: false,
     cantante: true,
     dj: false,
     guitarrista: false,
     drone: false
+}
+var juan = {
+    nombre: 'Juan',
+    edad: 6
 }
 
 function imprimirProfesiones(persona) {
@@ -34,13 +38,15 @@ function imprimirProfesiones(persona) {
     }
 }
 
-imprimirProfesiones(kristian)
+const MAYORIA_DE_EDAD = 18
 
-//Reto:
+function esMayorDeEdad(persona) {
+    return persona.edad >= MAYORIA_DE_EDAD
+}
+
 function imprimirSiEsMayorDeEdad(persona) {
-    //Kristian es mayor de edad
-    //Kristian es menor de edad
-    console.log(`${persona.nombre} es ${(persona.edad > 17) ? "mayor" : "menor"} de edad`)
+    console.log(`${persona.nombre} es ${esMayorDeEdad(persona) ? "mayor" : "menor"} de edad`)
 }
 
 imprimirSiEsMayorDeEdad(kristian)
+imprimirSiEsMayorDeEdad(juan)
