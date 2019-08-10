@@ -5,13 +5,18 @@ class Persona {
         this.altura = altura
     }
 
-    saludar() {
-        console.log(`Hola me llamo ${this.nombre} ${this.apellido}`)
+    saludar(fn) {
+        var {nombre, apellido} = this
+        console.log(`Hola me llamo ${nombre} ${apellido}`)
+        if (fn) {
+            fn(nombre, apellido, false)
+        }
     }
 
     soyAlto() {
-        if (this.altura > 1.5) {
-            console.log(`${this.nombre} es una persona Alta`)
+        var {nombre, altura} = this
+        if (altura > 1.5) {
+            console.log(`${nombre} es una persona Alta`)
         }
     }
 }
@@ -22,17 +27,29 @@ class Desarrollador extends Persona {
         super(nombre, apellido, altura)
     }
 
-    saludar() {
-        console.log(`Hola, me llamo ${this.nombre} ${this.apellido} y soy desarrollador`)
+    saludar(fn) {
+        var {nombre,apellido} = this
+        console.log(`Hola, me llamo ${nombre} ${apellido} y soy desarrollador`)
+        if (fn) {
+            fn(nombre, apellido, true)
+        }
     }
 
 }
 
+function responderSaludo(nombre, apellido, esDev) {
+    console.log(`Buen día ${nombre} ${apellido}`)
+    if (esDev) {
+        console.log(`Ah mira, no sabía que eras desarrollador(a)`)
+    }
+}
+
 var kristian = new Persona('Kristian', 'Lopez', 1.7)
+var david = new Persona('David', 'Lopez', .9)
+var goliat = new Persona('Goliat', 'Desconocido', 3)
 var desarrollador = new Desarrollador('Kris', 'Lopez Montes', 1.74)
-// var david = new Persona('David', 'Lopez', .9)
-// var goliat = new Persona('Goliat', 'Desconocido', 3)
 
 kristian.saludar()
-kristian.soyAlto()
-desarrollador.saludar()
+david.saludar(responderSaludo)
+goliat.saludar(responderSaludo)
+desarrollador.saludar(responderSaludo)
