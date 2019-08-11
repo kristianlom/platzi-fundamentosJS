@@ -3,23 +3,21 @@ const PEOPLE_URL = 'people/:id'
 
 const opts = {crossDomain: true}
 
-const onPeopleResponse = function (person) {
-
-    console.log(`${person.url.substr(person.url.length - 3, 2)} , soy ${person.name}`)
-    // console.log(`Hola -${person.id}-, yo soy ${person.name}`)
-}
-
-function obtenerPersonaje(id) {
+function obtenerPersonaje(id, callback) {
     const url = `${API_URL}${PEOPLE_URL.replace(':id', id)}`
 
-    $.get(url, opts, onPeopleResponse)
-        .fail(function () {
-            console.log('El personaje NO EXISTE!!!')
+    $.get(url, opts,
+        function (person) {
+            console.log(`${person.url.substr(person.url.length - 3, 2)} , soy ${person.name}`)
+            // console.log(`Hola -${person.id}-, yo soy ${person.name}`)
         })
+    if (callback) {
+        callback()
+    }
 
 }
 
-for (var i = 1; i < 100; i++) {
-    console.log(i)
-    obtenerPersonaje(i)
-}
+    obtenerPersonaje(1, () => {
+        obtenerPersonaje(2, function () {
+        })
+    })
