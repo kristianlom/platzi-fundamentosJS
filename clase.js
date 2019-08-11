@@ -6,18 +6,30 @@ const opts = {crossDomain: true}
 function obtenerPersonaje(id, callback) {
     const url = `${API_URL}${PEOPLE_URL.replace(':id', id)}`
 
-    $.get(url, opts,
-        function (person) {
-            console.log(`${person.url.substr(person.url.length - 3, 2)} , soy ${person.name}`)
-            // console.log(`Hola -${person.id}-, yo soy ${person.name}`)
+    $
+        .get(url, opts, callback)
+        .fail( () => {
+            console.log(`Sucesió un error. No se pudo obtener el personaje ${id}`)
         })
-    if (callback) {
-        callback()
-    }
-
 }
 
-    obtenerPersonaje(1, () => {
-        obtenerPersonaje(2, function () {
+obtenerPersonaje(1, function (person) {
+    console.log(`Hola, yo soy ${person.name}`)
+
+    obtenerPersonaje(2, function (person) {
+        console.log(`Hola, yo soy ${person.name}`)
+
+        obtenerPersonaje(3, function (person) {
+            console.log(`Hola, yo soy ${person.name}`)
+
+            obtenerPersonaje(4, function (person) {
+                console.log(`Hola, yo soy ${person.name}`)
+
+                obtenerPersonaje(5, function (person) {
+                    console.log(`Hola, yo soy ${person.name}`)
+                })
+
+            })
         })
     })
+})
