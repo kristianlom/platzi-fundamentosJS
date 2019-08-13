@@ -14,21 +14,14 @@ function obtenerPersonaje(id) {
     })
 }
 
-function onError(id){
+function onError(id) {
     console.log(`Sucedió un error al obtener el personaje ${id} `)
 }
 
-obtenerPersonaje(1)
-    .then(personaje => {
-        console.log(`El personaje 1 es ${personaje.name}`)
-        return obtenerPersonaje(2)
-    })
-    .then(personaje => {
-        console.log(`El personaje 2 es ${personaje.name}`)
-        return obtenerPersonaje(100)
-    })
-    .then(personaje => {
-        console.log(`El personaje 3 es ${personaje.name}`)
-        return obtenerPersonaje(4)
-    })
+var ids = [1, 2, 3, 4, 5, 6, 7]
+var promesas = ids.map(id => obtenerPersonaje(id))
+
+Promise
+    .all(promesas)
+    .then(personajes => console.log(personajes))
     .catch(onError)
