@@ -18,12 +18,17 @@ function onError(id){
     console.log(`Sucedió un error al obtener el personaje ${id} `)
 }
 
-obtenerPersonaje(100)
-    .then((personaje) => {
+obtenerPersonaje(1)
+    .then(personaje => {
         console.log(`El personaje 1 es ${personaje.name}`)
+        return obtenerPersonaje(2)
+    })
+    .then(personaje => {
+        console.log(`El personaje 2 es ${personaje.name}`)
+        return obtenerPersonaje(100)
+    })
+    .then(personaje => {
+        console.log(`El personaje 3 es ${personaje.name}`)
+        return obtenerPersonaje(4)
     })
     .catch(onError)
-
-obtenerPersonaje(1, function (person) {
-    console.log(`Hola, yo soy ${person.name}`)
-})
